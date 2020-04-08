@@ -39,7 +39,7 @@ public class ReadSomeInput {
         System.out.print("How old are you?");
         int age = console.nextInt();
 
-        Syste.out.println(age + "...That's quite old!")
+        System.out.println(age + "...That's quite old!")
     }
 }
 
@@ -62,3 +62,30 @@ public class ScannerSum {
 }
 
 //LEFT OFF AT: INPUT TOKENS
+//token: a unit of user input as read by the Scanner. they are separated by white spaces
+
+
+//SCANNERS AS PARAMETERS
+//if many methods read input, declare a Scanner in main and pass it to the others as a param
+public static void main(String[] args) {
+    Scanner console = new Scanner(System.in);
+    int sum = readSum3(console);
+    System.out.println("The sum is " + sum);
+}
+
+//prompts for 3 numbers and returns their sum
+public static int readSum3(Scanner console) {
+    System.out.print("Type 3 numbers: ");
+    int num1 = console.nextInt();
+    int num2 = console.nextInt();
+    int num3 = console.nextInt();
+    return num1 + num2 + num3;
+}
+
+//SCANNER AND CUMULATIVE SUM
+Scanner console = new Scanner(System.in);
+int sum = 0;
+for (int i = 1; i <= 100; i++) {
+    sum = sum + console.nextInt();
+}
+System.out.println("The sum is " + sum)
