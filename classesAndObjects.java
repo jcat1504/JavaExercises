@@ -78,3 +78,21 @@ Test t = new Test();
     Test t2 = (Test)t1.clone();
 
     //Deserialization-- a technique of reading an object from the saved state in a file
+
+//creating multiple objects by one type only(a good practice)
+
+//in inheritance system, we use parent class reference variable to store a sub class object. we can switch into different subclass objects using same
+//referenced variable
+
+class Animal{}
+class Dog extends Animal {}
+class Cat extends Animal {}
+
+public class Test
+{
+    //using the dog obj
+    Animal obj = new Dog{}
+
+    //using cat object
+    obj = new Cat();
+}
