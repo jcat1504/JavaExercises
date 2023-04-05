@@ -98,3 +98,32 @@ public class Person {
 	   return name;
 	}
  }
+
+//  - Setter: (mutator method) used to set value of a private variable in a class. It is a public method that takes an argument and assigns it to the private variable it is associated with
+//     - By convention, the name of setter method should start with “set” followed by name of private variable
+
+public class Person {
+	private String name;
+ 
+	public void setName(String name) {
+	   this.name = name;
+	}
+ }
+
+//  Using getters and setters allows us to control the access to private variables in our classes and can help ensure that they are accessed and modified in a safe and consistent manner
+
+// ## (Moving on…!) Concrete Class
+
+// - **Concrete Class**: Class that we can create an instance of, using the ***new*** keyword. In other words, it is a full implementation of its blueprint
+
+public class Car {
+    public String honk() {
+        return "beep!";
+    }
+
+    public String drive() {
+        return "vroom";
+    }
+}
+
+Car car = new Car();
