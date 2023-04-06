@@ -27,3 +27,58 @@ public abstract class Vehicle {
 	}
 }
 
+// If we wanted to have several types of file readers, we might create an abstract class that encapsulates what’s common to file reading:
+public abstract class BaseFileReader {
+	protected Path filePath;
+	protected BaseFileReader(Path filePath) {
+		this.filePath = filePath;
+		}
+
+	public Path getFilePath() {
+		return filePath;
+		}
+	public List<String> readFile() throws IOException {
+		return Files.lines(filePath)
+		.map(this.mapFileLine).collect(Collectors.toList());
+		}
+	protected abstract String mapFileLine(String line);
+}
+
+// **Defining Subclasses**
+
+// A natural implementation is probably one that converts a file's contents to lowercase:
+
+public class LowercaseFileReader(Path filePath) {
+	public LowercaseFileReader(Path filePath) {
+		super(filePath);
+	}
+
+@Override
+public String mapFileLine(String line) {
+	return line.toLowerCase();
+		}
+}
+
+//This one converts file’s contents to uppercase
+
+public class UppercaseFileReader extends BaseFileReader {
+	public UppercaseFileReader(Path filePath) {
+		super(filePath);
+	}
+
+@Override
+public String mapFileLine(String line) {
+	return line.toUpperCase();
+	}
+}
+
+
+//Using a Subclass
+@Test
+public void givenLowercaseFileReaderInstance_whenCalledreadFile_thenCorrect() throws Exception {
+    URL location = getClass().getClassLoader().getResource("files/test.txt")
+    Path path = Paths.get(location.toURI());
+    BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);
+        
+    assertThat(lowercaseFileReader.readFile()).isInstanceOf(List.class);
+}
