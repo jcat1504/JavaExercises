@@ -20,3 +20,10 @@ public interface Electronic {
 			System.out.println("Electrionic Description");
 		}
 }
+
+//We can implement an interface in a Java class by using the implements keyword:
+public class Computer implements Electronic {
+	@Override
+	public int getElectricityUse() {
+		return 1000;
+	}
