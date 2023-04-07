@@ -27,3 +27,50 @@ public class Computer implements Electronic {
 	public int getElectricityUse() {
 		return 1000;
 	}
+
+	//Comparator
+	public class Employee {
+		private double salary;
+		public double getSalary()
+			return salary;
+		}
+	
+		public void setSalary(double salary) {
+			this.salary = salary;
+		}
+	
+	public class EmployeeSalaryComparator implements Comparator<Employee> {
+		@Override
+		public int compare(Employee employeeA, Employee employeeB) {
+			if (employeeA.getSalary() < employeeB.getSalary()) {
+				return -1;
+			} else if (employeeA.getSalary() > employeeB.getSalary()) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+	}
+
+
+//Multiple Inheritances
+public interface Transform() {
+	void transform();
+}
+public interface Fly {
+	@Override 
+	void fly();
+}
+
+public class Car implements Fly, Transform {
+	@Override
+	public void fly() {
+		System.out.println("I can fly!");
+		}
+
+	@Override 
+	public void transform() {
+		System.out.println("I can Transform!");
+	}
+}
+
