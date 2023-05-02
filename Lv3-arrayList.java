@@ -179,3 +179,103 @@ Iterator<String> it = stringsToSearch.iterator();
 }
 
 // Overall, this code is used to remove any elements from the **`stringsToSearch`** list that are also present in the **`matchingStrings`** set. It does this by iterating over the elements of the list using an **`Iterator`**, and removing any elements that match elements in the set using the **`remove()`**method of the iterator.
+
+import java.util.ArrayList;
+
+public class ExampleArrayList {
+    public static void main(String[] args) {
+        // Create an ArrayList of Strings
+        ArrayList<String> list = new ArrayList<String>();
+
+        // Add elements to the ArrayList
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Orange");
+
+        // Print out the contents of the ArrayList
+        System.out.println("ArrayList: " + list);
+
+        // Access elements by index
+        System.out.println("Element at index 1: " + list.get(1));
+
+        // Modify an element
+        list.set(2, "Grape");
+
+        // Remove an element
+        list.remove(0);
+
+        // Print out the contents of the modified ArrayList
+        System.out.println("Modified ArrayList: " + list);
+    }
+}
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        list.add("Durian");
+        
+        ListIterator<String> iterator = list.listIterator();
+        
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+
+List<String> list = new ArrayList<>();
+list.add("one");
+list.add("two");
+list.add("three");
+
+ListIterator<String> iterator = list.listIterator(list.size());
+while (iterator.hasPrevious()) {
+    String element = iterator.previous();
+    System.out.println(element);
+}
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> fruits = new ArrayList<>();
+        fruits.add("apple");
+        fruits.add("banana");
+        fruits.add("cherry");
+        fruits.add("date");
+        
+        ListIterator<String> iterator = fruits.listIterator(fruits.size());
+        System.out.println("Fruits (in reverse order):");
+        while (iterator.hasPrevious()) {
+            System.out.println(iterator.previous());
+        }
+    }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+  public static void main(String[] args) {
+    List<String> fruits = new ArrayList<>();
+    fruits.add("Apple");
+    fruits.add("Banana");
+    fruits.add("Orange");
+    fruits.add("Mango");
+
+    String search = "Banana";
+    int index = fruits.indexOf(search);
+
+    if (index == -1) {
+      System.out.println(search + " is not found in the list");
+    } else {
+      System.out.println(search + " is found at index " + index);
+    }
+  }
+}
