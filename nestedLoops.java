@@ -46,3 +46,38 @@ public class Main {
 		System.out.println("non-fiction Book Description = " + book2.getDescription());
 		}
 }
+
+class Toolbox {
+	public static String toolboxName = "Awesome toolbox";
+	static class Saw {
+		public void cut() {
+			System.out.println("Cutting...");
+		}
+	}
+
+	static class TapeMeasure {
+		public void measure() {
+			System.out.println("Measuring...");
+		}
+	}
+
+	static class Wrench {
+		public void tighten() {
+			System.out.println("Tightening...");
+		}
+		public void loosen() {
+			System.out.println("Loosening...");
+		}
+	}
+}
+
+//We can use the Toolbox like so...
+public class Main {
+	public static void main(String[] args) {
+		Toolbox.Saw petersSaw = new Toolbox.Saw();
+		Toolbox.MeasuringTape amysMeasuringTape = new Toolbox.MeasuringTape();
+		Toolbox.Wrench randomWrench = new Toolbox.Wrench();
+
+		petersSaw.cut();
+		amysMeasuringTape.measure();
+		randomWrench.tighten();
