@@ -25,15 +25,25 @@ class Solution {
 }
 
 
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> numToIndex = new HashMap<>();
-            for(int i=0; i<nums.length; i++){
-                if(numToIndex.containsKey(target - nums[i])) {
-                    return new int[] {numToIndex.get(target - nums[i]), i};
-                }
-                numToIndex.put(nums[i], i); 
+  public boolean isPalindrome(String s) {
+        if(s == null) return false;
+        if(s.isEmpty()) return true;
+        
+        int i = 0, j = s.length() - 1;
+        
+        while(i < j){
+            while( i < j && !Character.isLetterOrDigit(s.charAt(i))){
+                i++;
             }
-        return new int[] {};
+            if(i >= j) break;
+
+            while( i < j && !Character.isLetterOrDigit(s.charAt(j))){
+                j--;
+            }
+            if(i >= j) break;
+
+            if(Character.toLowerCase(s.charAt(i++)) != Character.toLowerCase(s.charAt(j--))) return false;
+        }
+        
+        return true;
     }
-}
