@@ -5,7 +5,7 @@ class Solution {
     public Node cloneGraph(Node node) {
         if(node == null) return null;
         visited = new Node[101];
-        return DFS(node);
+        return DFS(node);//calls dfs method
     }
     public Node DFS(Node node){
         if(visited[node.val] != null) return visited[node.val];
