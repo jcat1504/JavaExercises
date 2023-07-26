@@ -17,3 +17,17 @@ private ListNode divideAndConquer(ListNode[] lists, int lo, int hi) {
   ListNode right = divideAndConquer(lists, mid + 1, hi);
   return mergeList(left, right);
 }
+
+private ListNode mergeList(ListNode n1, ListNode n2) {
+  ListNode dummy = new ListNode(-1);
+  ListNode prev = dummy;
+  while(n1 != null && n2 != null) {
+    if(n1.val < n2.val) {
+      prev.next = n1;
+    } else {
+      prev.next = n2;
+      n2 = n2.next;
+    }
+    prev.next = (n1 != null) ? n1 : n2;
+    return dummy.next;
+  }
