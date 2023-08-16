@@ -40,3 +40,44 @@ public class Solution {
             return false;
     }
 }
+
+public class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        // Create an array of ArrayLists to represent the directed graph
+        ArrayList[] graph = new ArrayList[numCourses];
+        for (int i = 0; i < numCourses; i++)
+            graph[i] = new ArrayList();
+            
+        // Create an array to keep track of visited nodes
+        boolean[] visited = new boolean[numCourses];
+        
+        // Build the directed graph using prerequisites
+        for (int i = 0; i < prerequisites.length; i++) {
+            graph[prerequisites[i][1]].add(prerequisites[i][0]);
+        }
+
+        // Traverse each course to check if it can be finished
+        for (int i = 0; i < numCourses; i++) {
+            if (!dfs(graph, visited, i))
+                return false;
+        }
+        return true;
+    }
+
+    // Depth-first search to check if a course can be finished
+    private boolean dfs(ArrayList[] graph, boolean[] visited, int course) {
+        // If the course has been visited in the current path, it's not possible to finish
+        if (visited[course])
+            return false;
+        else
+            visited[course] = true; // Mark the course as visited
+
+        // Traverse the prerequisites of the current course
+        for (int i = 0; i < graph[course].size(); i++) {
+            if (!dfs(graph, visited, (int) graph[course].get(i)))
+                return false;
+        }
+        visited[course] = false; // Reset the visited status when backtracking
+        return true;
+    }
+}
