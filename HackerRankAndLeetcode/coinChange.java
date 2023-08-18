@@ -56,6 +56,9 @@ public int coinChange(int[] coins, int amount) {
     int[] dp = new int[amount + 1];
     
     // Initialize the dp array with a value greater than the maximum possible amount
+    //.fill assigns same val to all elements in array
+    //initializes the dp array with the value amount + 1, effectively setting all elements of the 
+    //array to a value that's greater than the maximum possible amount.
     Arrays.fill(dp, amount + 1);
     
     // Set the base case: minimum coins needed to make amount 0 is 0
@@ -66,6 +69,9 @@ public int coinChange(int[] coins, int amount) {
         // Loop through each coin
         for (int c : coins) {
             // Update dp[i] if the current coin can be used to reduce the number of coins needed
+            //dp[i - c] is the minimum number of coins needed to make the amount i - c,
+            //and by adding 1, you are essentially counting the current coin c that you're using.
+            //math.min is us comparing the two:current known min num of coins and val using coin c
             if (i >= c) {
                 dp[i] = Math.min(dp[i], dp[i - c] + 1);
             }
