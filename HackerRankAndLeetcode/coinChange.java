@@ -49,3 +49,29 @@ public int coinChange(int[] coins, int amount) {
     // If no solution is found, return -1
     return -1;
 }
+
+
+public int coinChange(int[] coins, int amount) {
+    // Initialize an array to store the minimum number of coins needed for each amount
+    int[] dp = new int[amount + 1];
+    
+    // Initialize the dp array with a value greater than the maximum possible amount
+    Arrays.fill(dp, amount + 1);
+    
+    // Set the base case: minimum coins needed to make amount 0 is 0
+    dp[0] = 0;
+    
+    // Loop through amounts from 1 to the target amount
+    for (int i = 1; i <= amount; i++) {
+        // Loop through each coin
+        for (int c : coins) {
+            // Update dp[i] if the current coin can be used to reduce the number of coins needed
+            if (i >= c) {
+                dp[i] = Math.min(dp[i], dp[i - c] + 1);
+            }
+        }
+    }
+    
+    // If dp[amount] is still greater than the target amount, no solution is possible
+    return dp[amount] > amount ? -1 : dp[amount];
+}
