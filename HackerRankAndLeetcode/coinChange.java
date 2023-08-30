@@ -78,6 +78,6 @@ public int coinChange(int[] coins, int amount) {
         }
     }
     
-    // If dp[amount] is still greater than the target amount, no solution is possible
+    // If dp[amount] is still greater than the target amount, no solution is possible so return -1
     return dp[amount] > amount ? -1 : dp[amount];
 }
