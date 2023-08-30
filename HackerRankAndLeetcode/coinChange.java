@@ -81,3 +81,36 @@ public int coinChange(int[] coins, int amount) {
     // If dp[amount] is still greater than the target amount, no solution is possible so return -1
     return dp[amount] > amount ? -1 : dp[amount];
 }
+
+//MEMOIZATION
+
+public int coinChange(int[] coins, int amount) {
+    // Initialize memoization table with -1 (indicating uncomputed values)
+    int[] memo = new int[amount + 1];
+    Arrays.fill(memo, -1);
+
+    return dp(coins, amount, memo);
+}
+
+private int dp(int[] coins, int amount, int[] memo) {
+    // Base case: If the amount is 0, return 0 coins needed.
+    if (amount == 0) {
+        return 0;
+    }
+    // Check if the result is already memoized.
+    if (memo[amount] != -1) {
+        return memo[amount];
+    }
+
+    int minCoins = Integer.MAX_VALUE; // Initialize with a large value.
+    for (int coin : coins) {
+        if (amount - coin >= 0) {
+            // Calculate the minimum number of coins needed.
+            minCoins = Math.min(minCoins, dp(coins, amount - coin, memo) + 1);
+        }
+    }
+
+    // Store the result in the memoization table.
+    memo[amount] = (minCoins == Integer.MAX_VALUE) ? -1 : minCoins;
+    return memo[amount];
+}
