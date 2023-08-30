@@ -72,7 +72,7 @@ public int coinChange(int[] coins, int amount) {
             //dp[i - c] is the minimum number of coins needed to make the amount i - c,
             //and by adding 1, you are essentially counting the current coin c that you're using.
             //math.min is us comparing the two:current known min num of coins and val using coin c
-            if (i >= c) {
+            if (c <= i) {
                 dp[i] = Math.min(dp[i], dp[i - c] + 1);
             }
         }
