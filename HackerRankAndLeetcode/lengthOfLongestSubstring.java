@@ -27,5 +27,26 @@ public int lengthOfLongestSubstring(String s) {
     }
 
     // Return the maximum length of a substring without repeating characters.
-    return maxLength;
+
+import java.util.HashSet;
+import java.util.Set;
+
+return maxLength;
+}
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int start = 0, end = 0, maxLength = 0;
+        Set<Character> set = new HashSet<>();
+
+        while(end < s.length()) {
+            if(!set.contains(s.charAt(end))) {
+                set.add(s.charAt(end++));
+                maxLength = Math.max(maxLength, set.size());
+            } else {
+                set.remove(s.charAt(start++));
+            }
+        }
+        return maxLength;
+    }
 }
