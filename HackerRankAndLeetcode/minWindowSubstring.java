@@ -19,6 +19,8 @@ public String minWindow(String s, String t) {
     // Start sliding the window to the right.
     while (right < s.length()) {
         char currentChar = s.charAt(right);
+        //if currentChar is not present in windowMap, return 0 then increment 1
+        //If currentChar is present, incremebt value by 1
         windowMap.put(currentChar, windowMap.getOrDefault(currentChar, 0) + 1);
 
         // Check if the current character forms part of the target.
