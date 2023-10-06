@@ -14,8 +14,10 @@ class Solution {
             maxFreq = Math.max(maxFreq, charCount[s.charAt(right) - 'A']);
             
             // If the number of characters to replace exceeds k, move the left pointer
+            // right-left+1 is current window
             if (right - left + 1 - maxFreq > k) {
-                // Decrement the count of the character at the left pointer
+                //if this condition is met, it means there are more characters to replace than allowed
+                //so we have to decrement the count at left position to remove char from window
                 charCount[s.charAt(left) - 'A']--;
                 // Move the left pointer to the right
                 left++;
