@@ -8,7 +8,7 @@ public String longestPalindrome(String s) {
         dp[i][i] = true;
         //to make all characters palindromes, we make it true
         if (maxLength < 1) {
-            //if condition is true, we found first palindromic string(of length 1)
+        //if condition is true, we found first palindromic string(of length 1)
         //this is initialization step for max palindrome length
             maxLength = 1;
             start = i;
