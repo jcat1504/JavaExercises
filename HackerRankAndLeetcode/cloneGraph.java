@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 
 import org.w3c.dom.Node;
 
@@ -67,5 +68,27 @@ class Solution {
         Arrays.fill(visited , null); // initially store null at all places
         dfs(node , copy , visited); // make a dfs call for traversing all the vertices of the root node
         return copy; // in the end return the copy node
+    }
+}
+
+
+public class Solution {
+    private HashMap<Integer, Node> visited = new HashMap<>();
+
+    public Node cloneGraph(Node node) {
+        if (node == null)
+            return null;
+
+        if (visited.containsKey(node.val))
+            return visited.get(node.val);
+
+        Node clone = new Node(node.val);
+        visited.put(clone.val, clone);
+
+        for (Node neighbor : node.neighbors) {
+            clone.neighbors.add(cloneGraph(neighbor));
+        }
+
+        return clone;
     }
 }
