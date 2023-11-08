@@ -10,6 +10,8 @@ public int findMin(int[] nums) {
     }
     return nums[left];
 }
+//O(log n)
+//O(1)
 
 // more binary search
 public class Solution {
