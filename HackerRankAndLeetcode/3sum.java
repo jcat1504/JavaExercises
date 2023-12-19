@@ -3,6 +3,33 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
+//two pointers better solution with memory and space
+    public List<List<Integer>> threeSum(int[] nums) {
+        int target = 0;
+        Arrays.sort(nums);
+        Set<List<Integer>> seenSet = new HashSet<>();
+        List<List<Integer>> triplets = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            while(j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum == target) {
+                    seenSet.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    j++;
+                    k--;
+                } else if(sum<target) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+        }
+        triplets.addAll(seenSet);
+        return triplets;
+    }
+    
 class Solution {
 
     //2 pointers
