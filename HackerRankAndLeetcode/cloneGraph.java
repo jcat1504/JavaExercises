@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.HashMap;
-
 import org.w3c.dom.Node;
 
 class Solution {
@@ -18,6 +15,24 @@ class Solution {
     }
 }  
 
+//solution 2
+class Solution {
+    public Node cloneGraph(Node node) {
+        Map<Node, Node> map = new HashMap<>();
+        return clone(node, map);
+    }
+
+    private static Node clone(Node node, Map<Node, Node> map) {
+        if(node == null) return null;
+        if(map.containsKey(node)) return map.get(node);
+        Node clone = new Node(node.val);
+        map.put(node,clone);
+        for(Node neighbor : node.neighbors) {
+            clone.neighbors.add(clone(neighbor, map));
+        }
+        return clone;
+    }
+}
 /*
 // Definition for a Node.
 class Node {
