@@ -44,7 +44,6 @@ public String longestPalindrome(String s) {
         int length = 0;
         HashSet<Character> hset = new HashSet<Character>();
         for (int idx = 0; idx < s.length(); idx++) {
-            // Convert string to character array...
             char character = s.charAt(idx);
             if (hset.contains(character)) {
                 length += 2;
@@ -58,3 +57,4 @@ public String longestPalindrome(String s) {
             length ++;
         }
         return length;      
+    }
