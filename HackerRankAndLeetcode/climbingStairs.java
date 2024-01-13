@@ -28,3 +28,14 @@ public int climbStairs(int n) {
     }
     return nextVal;
 }
+
+public int climbStairsRecursive(int n, int[] memo) {
+    if (n <= 2) {
+        return n;
+    }
+    if (memo[n] != 0) {
+        return memo[n]; // Retrieve from memo if already calculated
+    }
+    memo[n] = climbStairsRecursive(n - 1, memo) + climbStairsRecursive(n - 2, memo);
+    return memo[n];
+}
